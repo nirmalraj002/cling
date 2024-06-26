@@ -16,6 +16,10 @@ async def pause_admin(cli, message: Message, _, chat_id):
         return await message.reply_text(_["admin_1"])
     await music_off(chat_id)
     await Inflex.pause_stream(chat_id)
+    photo_url = "https://te.legra.ph/file/10428b65648494b3c6ede.jpg"
     await message.reply_text(
         _["admin_2"].format(message.from_user.mention), reply_markup=close_markup(_)
+    )
+    await message.reply_photo(
+        photo=photo_url,                
     )
