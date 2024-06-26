@@ -66,12 +66,12 @@ async def overall_stats(client, CallbackQuery, _):
         config.AUTO_LEAVING_ASSISTANT,
         config.DURATION_LIMIT_MIN,
     )
-    med = InputMediaPhoto(media=config.STATS_IMG_URL, caption=text)
+    med = InputMediaPhoto(media=config.(STATS_IMG_URL), caption=text)
     try:
         await CallbackQuery.edit_message_media(media=med, reply_markup=upl)
     except MessageIdInvalid:
         await CallbackQuery.message.reply_photo(
-            photo=config.STATS_IMG_URL, caption=text, reply_markup=upl
+            photo=config.(STATS_IMG_URL), caption=text, reply_markup=upl
         )
 
 
@@ -129,7 +129,7 @@ async def bot_stats(client, CallbackQuery, _):
         call["collections"],
         call["objects"],
     )
-    med = InputMediaPhoto(media=config.STATS_IMG_URL, caption=text)
+    med = InputMediaPhoto(media=config.(STATS_IMG_URL), caption=text)
     try:
         await CallbackQuery.edit_message_media(media=med, reply_markup=upl)
     except MessageIdInvalid:
