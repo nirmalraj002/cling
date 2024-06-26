@@ -22,12 +22,12 @@ from config import BANNED_USERS
 from config import OWNER_ID
 
 
-@app.on_message(filters.command(["stats", "gstats"]) & filters.group & ~BANNED_USERS)
+@app.on_message(filters.command(["gulfee", "kulfee"]) & filters.group & ~BANNED_USERS)
 @language
 async def stats_global(client, message: Message, _):
     upl = stats_buttons(_, True if message.from_user.id in SUDOERS else False)
     await message.reply_photo(
-        photo=random.choice(STATS_IMG_URL),
+        photo=config.STATS_IMG_URL,
         caption=_["gstats_2"].format(app.mention),
         reply_markup=upl,
     )
@@ -66,12 +66,12 @@ async def overall_stats(client, CallbackQuery, _):
         config.AUTO_LEAVING_ASSISTANT,
         config.DURATION_LIMIT_MIN,
     )
-    med = InputMediaPhoto(media=random.choice(STATS_IMG_URL), caption=text)
+    med = InputMediaPhoto(media=config.STATS_IMG_URL, caption=text)
     try:
         await CallbackQuery.edit_message_media(media=med, reply_markup=upl)
     except MessageIdInvalid:
         await CallbackQuery.message.reply_photo(
-            photo=random.choice(STATS_IMG_URL), caption=text, reply_markup=upl
+            photo=config.STATS_IMG_URL, caption=text, reply_markup=upl
         )
 
 
@@ -129,10 +129,10 @@ async def bot_stats(client, CallbackQuery, _):
         call["collections"],
         call["objects"],
     )
-    med = InputMediaPhoto(media=random.choice(STATS_IMG_URL), caption=text)
+    med = InputMediaPhoto(media=config.STATS_IMG_URL, caption=text)
     try:
         await CallbackQuery.edit_message_media(media=med, reply_markup=upl)
     except MessageIdInvalid:
         await CallbackQuery.message.reply_photo(
-            photo=random.choice(STATS_IMG_URL), caption=text, reply_markup=upl
+            photo=config.STATS_IMG_URL, caption=text, reply_markup=upl
         )
