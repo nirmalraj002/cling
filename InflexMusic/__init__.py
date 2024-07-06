@@ -1,4 +1,4 @@
-from InflexMusic.core.bot import Inflex
+from InflexMusic.core.bot import InflexMusic
 from InflexMusic.core.dir import dirr
 from InflexMusic.core.git import git
 from InflexMusic.core.userbot import Userbot
